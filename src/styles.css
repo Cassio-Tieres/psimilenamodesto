@@ -1,0 +1,212 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --radius-2xl: 2rem;
+  --radius-3xl: 2.5rem;
+
+  --font-serif: "Bree Serif", ui-serif, Georgia, serif;
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, sans-serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-sage: var(--sage);
+  --color-moss: var(--moss);
+  --color-leaf: var(--leaf);
+  --color-earth: var(--earth);
+  --color-caramel: var(--caramel);
+  --color-clay: var(--clay);
+  --color-cream: var(--cream);
+  --color-paper: var(--paper);
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Brand palette in oklch */
+  --sage: oklch(0.76 0.10 125);        /* #99b970 */
+  --moss: oklch(0.42 0.06 138);        /* #3f5836 */
+  --leaf: oklch(0.88 0.10 128);        /* #c2e29b */
+  --earth: oklch(0.52 0.11 55);        /* #995a31 */
+  --caramel: oklch(0.55 0.13 48);      /* #a96222 */
+  --clay: oklch(0.41 0.14 35);         /* #7f2c16 */
+  --cream: oklch(0.985 0.012 85);      /* warm paper */
+  --paper: oklch(0.96 0.018 85);
+
+  --background: var(--cream);
+  --foreground: var(--moss);
+
+  --card: oklch(0.99 0.008 85);
+  --card-foreground: var(--moss);
+
+  --popover: oklch(0.99 0.008 85);
+  --popover-foreground: var(--moss);
+
+  --primary: var(--moss);
+  --primary-foreground: var(--cream);
+
+  --secondary: var(--paper);
+  --secondary-foreground: var(--moss);
+
+  --muted: oklch(0.93 0.02 85);
+  --muted-foreground: oklch(0.50 0.04 110);
+
+  --accent: var(--earth);
+  --accent-foreground: var(--cream);
+
+  --destructive: oklch(0.55 0.18 28);
+  --destructive-foreground: var(--cream);
+
+  --border: oklch(0.88 0.02 90);
+  --input: oklch(0.92 0.018 90);
+  --ring: var(--sage);
+
+  --sidebar: var(--cream);
+  --sidebar-foreground: var(--moss);
+  --sidebar-primary: var(--moss);
+  --sidebar-primary-foreground: var(--cream);
+  --sidebar-accent: var(--paper);
+  --sidebar-accent-foreground: var(--moss);
+  --sidebar-border: var(--border);
+  --sidebar-ring: var(--sage);
+
+  --shadow-soft: 0 1px 2px oklch(0.42 0.06 138 / 0.04),
+                 0 12px 40px -16px oklch(0.42 0.06 138 / 0.18);
+  --shadow-leaf: 0 30px 80px -40px oklch(0.42 0.06 138 / 0.35);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-serif {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--moss);
+  }
+
+  ::selection {
+    background: var(--leaf);
+    color: var(--moss);
+  }
+}
+
+@layer utilities {
+  .editorial-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--caramel);
+    font-weight: 500;
+  }
+
+  .display {
+    font-family: var(--font-serif);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .prose-soft p {
+    font-family: var(--font-sans);
+    color: oklch(0.38 0.04 130);
+    line-height: 1.8;
+    font-size: 1.0625rem;
+  }
+
+  .grain {
+    background-image: radial-gradient(oklch(0.42 0.06 138 / 0.06) 1px, transparent 1px);
+    background-size: 3px 3px;
+  }
+
+  .blob {
+    border-radius: 62% 38% 54% 46% / 51% 47% 53% 49%;
+  }
+
+  .hover-lift {
+    transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 600ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .hover-lift:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-leaf);
+  }
+
+  .link-soft {
+    position: relative;
+    transition: color 300ms ease;
+  }
+  .link-soft::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-soft:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .fade-up {
+    animation: fade-up 900ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .breathe {
+    animation: breathe 9s ease-in-out infinite;
+  }
+  @keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.04); }
+  }
+}
