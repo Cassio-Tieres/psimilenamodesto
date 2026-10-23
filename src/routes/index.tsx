@@ -11,16 +11,17 @@ import { supabase } from "@/supabaseClient";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Milena Modesto Psicoterapia humanizada" },
+      { title: "Milena Modesto | Psicóloga Clínica e Psicoterapia" },
       {
         name: "description",
         content:
-          "Psicóloga clínica com abordagem fenomenológico-existencial. Um espaço para respirar, sentir e existir.",
+          "Conheça o trabalho da psicóloga Milena Modesto, saiba mais sobre o atendimento psicológico e encontre informações sobre como agendar uma consulta.",
       },
-      { property: "og:title", content: "Milena Modesto Psicoterapia humanizada" },
+      { property: "og:title", content: "Milena Modesto | Psicóloga Clínica e Psicoterapia" },
       {
         property: "og:description",
-        content: "Um espaço de escuta sensível, presente e sem pressa.",
+        content:
+          "Conheça o trabalho da psicóloga Milena Modesto, saiba mais sobre o atendimento psicológico e encontre informações sobre como agendar uma consulta.",
       },
     ],
   }),

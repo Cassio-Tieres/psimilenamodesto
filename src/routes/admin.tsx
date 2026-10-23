@@ -5,6 +5,7 @@ export const Route = createFileRoute("/admin")({
     meta: [
       { title: "Admin - Milena Modesto" },
       { name: "description", content: "Painel administrativo do blog." },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: AdminLayout,

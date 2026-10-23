@@ -6,6 +6,7 @@ export const Route = createFileRoute("/admin/login")({
     meta: [
       { title: "Login - Admin" },
       { name: "description", content: "Acesso ao painel administrativo." },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: AdminLogin,

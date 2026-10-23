@@ -74,17 +74,23 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Milena Modesto Psicóloga clínica" },
+      { title: "Milena Modesto | Psicóloga Clínica e Psicoterapia" },
       {
         name: "description",
         content:
-          "Psicoterapia humanizada, fenomenológico-existencial. Um espaço de escuta para ansiedade, exaustão emocional, relações e pertencimento.",
+          "Conheça o trabalho da psicóloga Milena Modesto, saiba mais sobre o atendimento psicológico e encontre informações sobre como agendar uma consulta.",
+      },
+      {
+        name: "keywords",
+        content:
+          "Psicóloga Milena Modesto, Psicóloga em Aracaju, Psicóloga clínica em Aracaju, Psicóloga em Sergipe, Atendimento psicológico em Aracaju, Psicóloga online, Atendimento psicológico online, Psicoterapia online, Consulta com psicóloga online, Agendar consulta com psicóloga, Contato com psicóloga em Aracaju, Consulta psicológica presencial, Agendar psicoterapia online",
       },
       { name: "author", content: "Milena Modesto" },
-      { property: "og:title", content: "Milena Modesto Psicóloga clínica" },
+      { property: "og:title", content: "Milena Modesto | Psicóloga Clínica e Psicoterapia" },
       {
         property: "og:description",
-        content: "Um espaço de escuta sensível, presente e sem pressa.",
+        content:
+          "Conheça o trabalho da psicóloga Milena Modesto, saiba mais sobre o atendimento psicológico e encontre informações sobre como agendar uma consulta.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

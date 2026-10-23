@@ -1,21 +1,44 @@
 import { createFileRoute } from "@tanstack/react-router";
 import type {} from "@tanstack/react-start";
+import { supabase } from "@/supabaseClient";
 
-const BASE_URL = "";
+function escapeXml(value: string) {
+  return value.replace(/[<>&"']/g, (character) => {
+    const entities: Record<string, string> = {
+      "<": "&lt;",
+      ">": "&gt;",
+      "&": "&amp;",
+      '"': "&quot;",
+      "'": "&apos;",
+    };
+    return entities[character];
+  });
+}
 
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async () => {
+      GET: async ({ request }) => {
+        const origin = new URL(request.url).origin;
         const paths = ["/", "/sobre", "/psicoterapia", "/blog", "/contato"];
-        const { posts } = await import("@/data/posts");
-        const all = [...paths, ...posts.map((p) => `/blog/${p.slug}`)];
+        if (supabase) {
+          const { data, error } = await supabase.from("posts").select("slug");
+          if (error) {
+            console.error("Não foi possível carregar os posts para o sitemap:", error);
+          } else {
+            paths.push(
+              ...(data ?? [])
+                .filter((post): post is { slug: string } => typeof post.slug === "string")
+                .map((post) => `/blog/${encodeURIComponent(post.slug)}`),
+            );
+          }
+        }
+
+        const urls = [...new Set(paths)].map((path) => escapeXml(new URL(path, origin).toString()));
         const xml = [
           `<?xml version="1.0" encoding="UTF-8"?>`,
           `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`,
-          ...all.map(
-            (p) => `  <url><loc>${BASE_URL}${p}</loc><changefreq>weekly</changefreq></url>`,
-          ),
+          ...urls.map((url) => `  <url><loc>${url}</loc></url>`),
           `</urlset>`,
         ].join("\n");
         return new Response(xml, {
