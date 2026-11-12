@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://psimilenamodesto.netlify.app/sitemap.xml
