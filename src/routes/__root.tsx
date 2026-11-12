@@ -68,7 +68,6 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           </div>
         </div>
       </div>
-      </div>
     </>
   );
 }
